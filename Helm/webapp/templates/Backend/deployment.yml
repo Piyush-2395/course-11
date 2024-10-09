@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learnerbackend-deployment
+spec:
+  type: NodePort
+  selector:
+    matchLabels:
+      app: learnerbe
+  template:
+    metadata:
+      labels:
+        app: learnerbe
+    spec:
+      containers:
+      - name: learnerbe
+        image: eagleeye007/learnreportbe
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000

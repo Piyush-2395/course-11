@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learnerfronted-deployment
+spec:
+  type: NodePort
+  selector:
+    matchLabels:
+      app: learnerfe
+  template:
+    metadata:
+      labels:
+        app: learnerfe
+    spec:
+      containers:
+      - name: learnerfe
+        image: eagleeye007/learnreportfe
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
